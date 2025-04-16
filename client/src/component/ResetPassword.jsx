@@ -29,7 +29,7 @@ export default function ResetPassword() {
             return;
         }
 
-        fetch(`http://localhost:8000/resetpassword/${id}/${token}`, {
+        fetch(`https://galwinapp-d87b7b990a02.herokuapp.com/resetpassword/${id}/${token}`, {
             method: "POST",
             body: JSON.stringify(userCreds),
             headers: { "Content-type": "application/json" }
