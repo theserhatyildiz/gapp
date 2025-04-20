@@ -8,31 +8,30 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-
       manifest: {
-        name: 'Galwin',  
-        short_name: 'Galwin',  
-        description: 'App to track your nutrition and weight',  
-        theme_color: '#ffffff', 
+        name: 'Galwin',
+        short_name: 'Galwin',
+        description: 'App to track your nutrition and weight',
+        theme_color: '#ffffff',
         background_color: '#ffffff',
-        id:'/diet',
+        id: '/diet',
         start_url: '/diet',
         icons: [
-          {  
-            src: 'pwa-192x192.png',  
-            sizes: '192x192',  
-            type: 'image/png',  
-          },  
-          {  
-            src: 'pwa-512x512.png',  
-            sizes: '512x512',  
-            type: 'image/png',  
-          },  
-          {  
-            src: 'pwa-512x512.png',  
-            sizes: '512x512',  
-            type: 'image/png',  
-            purpose: 'maskable',  
+          {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
           },
           {
             src: "android/android-launchericon-512-512.png",
@@ -177,7 +176,7 @@ export default defineConfig({
             label: 'Home screen',
             form_factor: 'wide'
           },
-        ],  
+        ],
         workbox: {
           globPatterns: ['**/*.{js,css,html,png,jpg,svg}'],
           runtimeCaching: [
@@ -194,6 +193,9 @@ export default defineConfig({
           ],
         },
       }
-    }) 
+    })
   ],
+  server: {
+    historyApiFallback: true
+  }
 })
