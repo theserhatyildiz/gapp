@@ -1099,25 +1099,45 @@ app.post('/update-username', async (req, res) => {
     }
 });
 
-if (process.env.NODE_ENV === "production") {
-  // Serve the static files from the Vite build directory
+// if (process.env.NODE_ENV === "production") {
+//   // Serve the static files from the Vite build directory
+//   app.use(express.static(path.join(__dirname, '/client/dist')));
+
+//   // Serve the JavaScript file
+//   app.get('/assets/index-CW5KkyhG.js', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/client/dist/assets/index-CW5KkyhG.js'));
+//   });
+
+//   // Handle all other routes by serving the index.html file
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/client/dist/index.html'));
+//   });
+// } else {
+//   // In development mode, just return a simple message
+//   app.get('/', (req, res) => {
+//     res.send('API running');
+//   });
+// }
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the Vite build output
   app.use(express.static(path.join(__dirname, '/client/dist')));
 
-  // Serve the JavaScript file
-  app.get('/assets/index-CW5KkyhG.js', (req, res) => {
-    res.sendFile(path.join(__dirname, '/client/dist/assets/index-CW5KkyhG.js'));
-  });
-
-  // Handle all other routes by serving the index.html file
+  // Handle all SPA routes
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/client/dist/index.html'));
   });
 } else {
-  // In development mode, just return a simple message
+  // For dev/testing environments
   app.get('/', (req, res) => {
     res.send('API running');
   });
 }
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
 
 app.listen(process.env.PORT || PORT, () => {
     console.log('Server is running !!!')
