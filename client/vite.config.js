@@ -14,8 +14,8 @@ export default defineConfig({
         description: 'App to track your nutrition and weight',
         theme_color: '#ffffff',
         background_color: '#ffffff',
-        id: '/diet',
-        start_url: '/diet',
+        id: '/',
+        start_url: '/',
         icons: [
           {
             src: 'pwa-192x192.png',
